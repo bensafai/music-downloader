@@ -1,0 +1,20 @@
+spotify:
+  oauth_api:
+    client_id: YOUR_CLIENT_ID
+    client_secret: YOUR_CLIENT_SECRET
+    oath_token_url: https://accounts.spotify.com/api/token
+    request_data: {"grant_type": "$VALUE"}
+    authorization: Basic
+    request_timeout: 30
+    method: POST
+  search_api:
+    search_url: https://api.spotify.com/v1/search
+    authorization: Bearer
+    request_data: {"q": "$VALUE"}
+
+napster:
+  client_id: xxx
+  client_secret: xxx
+  oath_token_url: xxx
+  request_timeout: 30
+  method: POST
