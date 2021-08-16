@@ -21,7 +21,7 @@ class SpotifyApiConnection(ConnectionServiceInterface):
                 config_data = config_file[self.client]
         return config_data
 
-    def _get_request_data(self):
+    def _get_request_data(self, data):
         return {"grant_type": "client_credentials"}
 
     def _get_request_headers(self, client_credential):
