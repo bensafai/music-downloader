@@ -6,21 +6,17 @@ class ConnectionServiceInterface(ABC):
         pass
 
     @abstractmethod
-    def _get_config(self):
+    def _get_request_headers(self, data):
         pass
 
     @abstractmethod
-    def _get_client_credentials(self, client_id, client_secret):
+    def _get_request_body(self):
         pass
 
     @abstractmethod
-    def _get_request_data(self):
+    def get_token(self, client_credentials):
         pass
 
     @abstractmethod
-    def _get_request_headers(self, client_credential):
-        pass
-
-    @abstractmethod
-    def get_response(self):
+    def get_search_request(self, token):
         pass
