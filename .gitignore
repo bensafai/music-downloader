@@ -1,7 +1,8 @@
 config.yml
 .idea
 
-*__pycache__*
+__pycache__/
+/__p
 *.py[cod]
 *$py.class
 
