@@ -1,6 +1,6 @@
-from src.Controller import DownloadController as controller
+from src.Controller.SearchController import SearchController
 
 if __name__ == '__main__':
-    controller = controller.DownloadController('spotify')
-    request = controller.request_action()
+    search_controller = SearchController('spotify')
+    request = search_controller.request_action()
     print(request)

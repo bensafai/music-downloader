@@ -14,7 +14,7 @@ class ConnectionServiceInterface(ABC):
         pass
 
     @abstractmethod
-    def get_token(self, client_credentials):
+    def get_access_token(self, client_credentials):
         pass
 
     @abstractmethod

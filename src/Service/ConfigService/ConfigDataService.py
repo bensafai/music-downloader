@@ -1,10 +1,11 @@
 import os.path
 import yaml
 
+
 class ConfigDataService:
-    def __init__(self, client_name: str):
+    def __init__(self):
         self.config_path = './config.yml'
-        self.client_name = client_name
+        self.client_name = ''
 
     def get_config(self):
         config_data = False

@@ -1,11 +1,14 @@
 from .ConnectionServiceInterface import ConnectionServiceInterface
+from ..ConfigService.ConfigDataService import ConfigDataService
+from ..AuthenticationService.AuthenticationService import AuthenticationService
 import requests
 
-#TODO: manage token expiry time
+
+# TODO: manage token expiry time
 class SpotifyApiConnection(ConnectionServiceInterface):
-    def __init__(self, config: dict):
-        ConnectionServiceInterface.__init__(self)
-        self.config = config
+    def __init__(self):
+        super(SpotifyApiConnection, self).__init__()
+        self.config = []
 
     def _get_request_body(self):
         return self.config['oauth']['request_body']
@@ -14,16 +17,20 @@ class SpotifyApiConnection(ConnectionServiceInterface):
         auth_scheme = self.config['oauth']['auth_scheme']
         return {"Authorization": f"{auth_scheme} {data}"}
 
-    def get_token(self, client_credentials: str):
+    def get_access_token(self, client_credentials: str):
         token = False
         if self.config:
-            request = requests.post(self.config['oauth']['token_url'], data=self._get_request_body(), headers=self._get_request_headers(client_credentials))
+            request = requests.post(self.config['oauth']['token_url'], data=self._get_request_body(),
+                                    headers=self._get_request_headers(client_credentials))
             if request.status_code in range(200, 299):
                 token = request.json()
-        return token
+        return token['access_token']
 
     def get_search_request(self, token):
         request = False
-        if (token):
-            request = requests.get('https://api.spotify.com/v1/search?q=radiohead&type=track&limit=3', headers={"Authorization": f"Bearer {token}"})
+        if token:
+            request = requests.get('https://api.spotify.com/v1/search?q=radiohead&type=track&limit=3',
+                                   headers={"Authorization": f"Bearer {token}"})
+
+            #print(request.elapsed.total_seconds()) // response time
         return request.json()
