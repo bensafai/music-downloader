@@ -1,6 +1,4 @@
 from .ConnectionServiceInterface import ConnectionServiceInterface
-from ..ConfigService.ConfigDataService import ConfigDataService
-from ..AuthenticationService.AuthenticationService import AuthenticationService
 import requests
 
 

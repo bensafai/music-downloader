@@ -1,8 +1,8 @@
-from src.Service.ConnectionService.SpotifyApiConnection import SpotifyApiConnection
-from src.Service.ConfigService.ConfigDataService import ConfigDataService
-from src.Service.AuthenticationService.AuthenticationService import AuthenticationService
+from src.Service.Connection.SpotifyApiConnection import SpotifyApiConnection
+from src.Service.ConfigData.ConfigDataService import ConfigDataService
+from src.Service.Authorization.AuthenticationService import AuthenticationService
 
-
+#TODO: add Logger
 class SearchController(ConfigDataService, AuthenticationService, SpotifyApiConnection):
     def __init__(self, client_name):
         super(SearchController, self).__init__()
